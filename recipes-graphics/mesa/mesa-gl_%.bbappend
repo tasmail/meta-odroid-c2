@@ -11,4 +11,4 @@ do_install_append () {
     fi
 }
 
-PACKAGECONFIG_append = " ${@bb.utils.contains('MACHINE_FEATURES', 'lima', 'kmsro lima panfrost', '', d)}"
+#### PACKAGECONFIG_append_meson-gx = " ${@bb.utils.contains('MACHINE_FEATURES', 'lima', 'kmsro lima panfrost', '', d)}"
