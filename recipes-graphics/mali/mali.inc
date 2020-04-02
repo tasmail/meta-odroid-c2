@@ -5,7 +5,7 @@ DEPENDS += "${@bb.utils.contains("DISTRO_FEATURES", "wayland", "virtual/mesa", "
 DEPENDS += "${@bb.utils.contains("DISTRO_FEATURES", "x11", " virtual/libx11 libxext libdrm libxfixes libxdamage", " ", d)}"
 
 PROVIDES = "virtual/gpu"
-PROVIDES += "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'virtual/egl virtual/libgles1 virtual/libgles2 virtual/libgbm', '', d)}"
+PROVIDES += "${@bb.utils.contains("DISTRO_FEATURES", "opengl", "virtual/egl virtual/libgles1 virtual/libgles2 virtual/libgbm", " ", d)}"
 PROVIDES += "${@bb.utils.contains("DISTRO_FEATURES", "wayland", " virtual/libwayland-egl", " ", d)}"
 
 INSANE_SKIP_${PN} = "ldflags dev-so"
