@@ -2,8 +2,6 @@ require mali.inc
 
 DESCRIPTION = "Mali 450 GPU Binaries for ODROID-C2"
 
-DEFAULT_PREFERENCE = "-1"
-
 LIC_FILES_CHKSUM = "file://README.md;md5=b4d850abae9a934f53b165f0c71518b2"
 
 DEPENDS += "patchelf-native"
