@@ -5,7 +5,7 @@ COMPATIBLE_MACHINE = "odroid-c2"
 KERNEL_DEVICETREE ?= "amlogic/meson-gxbb-odroidc2.dtb"
 
 LINUX_VERSION = "4.19"
-LINUX_VERSION_EXTENSION = "-jumpnow"
+LINUX_VERSION_EXTENSION = "-maxcrc"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/linux-stable-${LINUX_VERSION}:"
 
