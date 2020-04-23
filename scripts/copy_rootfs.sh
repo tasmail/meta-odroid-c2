@@ -3,7 +3,7 @@
 MACHINE=odroid-c2
 
 if [ "x${1}" = "x" ]; then
-    echo "Usage: ${0} <block device> [ <image-type> [<hostname>] ]"
+    echo "Usage: ${0} <block device> [ <image-type> ]"
     exit 0
 fi
 
@@ -43,14 +43,6 @@ fi
 
 echo "IMAGE: $IMAGE"
 
-if [ "x${3}" = "x" ]; then
-    TARGET_HOSTNAME=$MACHINE
-else
-    TARGET_HOSTNAME=${3}
-fi
-
-echo -e "HOSTNAME: $TARGET_HOSTNAME\n"
-
 if [ ! -f "${SRC}/${IMAGE}-image-${MACHINE}.tar.xz" ]; then
     echo -e "File not found: ${SRC}/${IMAGE}-image-${MACHINE}.tar.xz\n"
     exit 1
@@ -80,10 +72,6 @@ echo "Generating a random-seed for urandom"
 mkdir -p /media/card/var/lib/urandom
 sudo dd if=/dev/urandom of=/media/card/var/lib/urandom/random-seed bs=512 count=1
 sudo chmod 600 /media/card/var/lib/urandom/random-seed
-
-echo "Writing hostname to /etc/hostname"
-export TARGET_HOSTNAME
-sudo -E bash -c 'echo ${TARGET_HOSTNAME} > /media/card/etc/hostname'        
 
 if [ -f ./interfaces ]; then
     echo "Writing ./interfaces to /media/card/etc/network/"
