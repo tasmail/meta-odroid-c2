@@ -1,5 +1,5 @@
-SUMMARY = "A console development image customized for the rpi"
-HOMEPAGE = "http://www.jumpnowtek.com"
+SUMMARY = "A console image customized for the odroid-c2"
+HOMEPAGE = "http://www.maxcrc.de"
 
 require images/basic-dev-image.bb
 

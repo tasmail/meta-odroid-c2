@@ -1,12 +1,3 @@
-# Local configuration for meta-odroid-c2 images
-# Yocto Project 3.0 Poky distribution [zeus] branch
-# This is a sysvinit system
-
-# use local version, mask the version in meta-openembedded
-BBMASK = "meta-networking/recipes-kernel/wireguard"
-# mask our local version for testing upstream
-# BBMASK = "meta-odroid-c2/recipes-kernel/wireguard"
-
 LICENSE_FLAGS_WHITELIST = "commercial"
 
 DISTRO_FEATURES = "ext2 usbhost ${DISTRO_FEATURES_LIBC}"
@@ -38,9 +29,9 @@ SDKMACHINE = "x86_64"
 # for empty root password
 #EXTRA_IMAGE_FEATURES = "debug-tweaks"
 
-# to set a root password of 'jumpnowtek'
+# to set a root password
 INHERIT += "extrausers"
-EXTRA_USERS_PARAMS = "usermod -P jumpnowtek root; "
+EXTRA_USERS_PARAMS = "usermod -P root_password root; "
 
 # to force a password change on first login
 INHERIT += "chageusers"

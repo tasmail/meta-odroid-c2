@@ -12,11 +12,5 @@ This layer depends on:
     URI: https://github.com/jumpnow/meta-jumpnow.git
     branch: zeus
 
-Latest commits:
 
-    poky f9ef210967
-    meta-openembedded 9e60d3066
-    meta-security ecd8c30
-    meta-jumpnow 6869932
-
-meta-odroid-c2 layer maintainer: Scott Ellis <scott@jumpnowtek.com>
+meta-odroid-c2 layer maintainer: Andrii Tkachenko <atkachenko@maxcrc.de>
