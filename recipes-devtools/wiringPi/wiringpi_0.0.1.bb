@@ -4,13 +4,11 @@ SECTION = "devel/libs"
 LICENSE = "LGPLv3+"
 LIC_FILES_CHKSUM = "file://COPYING.LESSER;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
-SRCREV = "98bcb20d9391ebde24f9eb1244f0d238fb1a1dab"
-
-S = "${WORKDIR}/git"
-
 SRC_URI = "\
           git://github.com/hardkernel/wiringPi.git;protocol=git;branch=master-old \
           "
+
+S = "${WORKDIR}/git"
 
 COMPATIBLE_MACHINE = "odroid-c2"
 
