@@ -1,12 +1,9 @@
-DESCRIPTION = "A library to control Raspberry Pi GPIO channels"
-HOMEPAGE = "https://projects.drogon.net/raspberry-pi/wiringpi/"
-SECTION = "devel/libs"
-LICENSE = "LGPLv3+"
-LIC_FILES_CHKSUM = "file://COPYING.LESSER;md5=e6a600fd5e1d9cbde2d983680233ad02"
+SUMMARY = "WiringPi is a PIN based GPIO access library written in C for Raspberry Pi. Port for ODROID"
 
-SRC_URI = "\
-          git://github.com/hardkernel/wiringPi.git;protocol=git;branch=master-old \
-          "
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+
+SRC_URI = "git://github.com/hardkernel/wiringPi.git;protocol=git;branch=master-old"
 
 S = "${WORKDIR}/git"
 
