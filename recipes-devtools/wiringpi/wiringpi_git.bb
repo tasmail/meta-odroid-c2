@@ -20,7 +20,7 @@ do_compile() {
     oe_runmake -C wiringPi
     oe_runmake -C devLib static
     oe_runmake -C wiringPi static
-    oe_runmake -C gpio 'LDFLAGS=${LDFLAGS} -L${S}/wiringPi  -L${S}/devLib'
+    oe_runmake -C gpio 'CFLAGS=-I${S}/wiringPi,-I${S}/devLib' 'LDFLAGS=${LDFLAGS},-L${S}/wiringPi,-L${S}/devLib'
 }
 
 do_install() {
