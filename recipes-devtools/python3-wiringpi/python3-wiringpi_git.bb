@@ -7,9 +7,11 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7ca
 SRC_URI = "gitsm://github.com/hardkernel/WiringPi2-Python.git;protocol=git;branch=master"
 SRCREV = "180832215099dcf31a2bad186ec495deed9c1922"
 
+S = "${WORKDIR}/git"
+
 inherit setuptools3
 
-DEPENDS += "python3-setuptools swig wiringpi"
+DEPENDS += "python3-setuptools swig-native wiringpi"
 
 python() {
     if 'meta-python' not in d.getVar('BBFILE_COLLECTIONS').split():

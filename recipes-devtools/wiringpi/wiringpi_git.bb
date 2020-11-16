@@ -18,15 +18,13 @@ EXTRA_OEMAKE += "'LDCONFIG=echo'"
 EXTRA_OEMAKE += "'WIRINGPI_SUID=0'"
 
 do_compile() {
-    oe_runmake -C devLib
-    oe_runmake -C wiringPi
     oe_runmake -C devLib static
     oe_runmake -C wiringPi static
     oe_runmake -C gpio 'CFLAGS=-I${S}/wiringPi -I${S}/devLib' 'LDFLAGS=${LDFLAGS} -L${S}/wiringPi -L${S}/devLib'
 }
 
 do_install() {
-    oe_runmake -C devLib install
-    oe_runmake -C wiringPi install
+    oe_runmake -C devLib install static
+    oe_runmake -C wiringPi install static
     oe_runmake -C gpio install
 }
