@@ -12,19 +12,34 @@ COMPATIBLE_MACHINE = "odroid-c2"
 
 CFLAGS_prepend = "-I${S}/wiringPi -I${S}/devLib"
 
-EXTRA_OEMAKE += "'INCLUDE_DIR=${D}${includedir}' 'LIB_DIR=${D}${libdir}'"
-EXTRA_OEMAKE += "'DESTDIR=${D}/usr' 'PREFIX=""'"
-EXTRA_OEMAKE += "'LDCONFIG=echo'"
-EXTRA_OEMAKE += "'WIRINGPI_SUID=0'"
+EXTRA_OEMAKE = "\
+    'CXX=${CXX}' \
+    'LD=${CXX}' \
+    'AR=${AR}' \
+    'RANLIB=${RANLIB}' \
+    \
+    'DEBUGFLAGS=' \
+    'CPPFLAGS=${CPPFLAGS}' \
+    'CXXFLAGS=${CXXFLAGS}' \
+    'LDFLAGS=${LDFLAGS}' \
+    'CFLAGS=${CFLAGS}' \
+    'INCLUDE_DIR=${D}${includedir}' \
+    'LIB_DIR=${D}${libdir}' \
+    'DESTDIR=${D}/usr' \
+    'PREFIX=""' \
+"
+
 
 do_compile() {
+    oe_runmake -C devLib
+    oe_runmake -C wiringPi
     oe_runmake -C devLib static
     oe_runmake -C wiringPi static
-    oe_runmake -C gpio 'CFLAGS=-I${S}/wiringPi -I${S}/devLib' 'LDFLAGS=${LDFLAGS} -L${S}/wiringPi -L${S}/devLib'
+    oe_runmake -C gpio 'LDFLAGS=${LDFLAGS} -L${S}/wiringPi -L${S}/devLib'
 }
 
 do_install() {
-    oe_runmake -C devLib install static
-    oe_runmake -C wiringPi install static
+    oe_runmake -C devLib install
+    oe_runmake -C wiringPi install
     oe_runmake -C gpio install
 }
