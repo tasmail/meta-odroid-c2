@@ -14,14 +14,13 @@ CFLAGS_prepend = "-I${S}/wiringPi -I${S}/devLib"
 
 EXTRA_OEMAKE += "'INCLUDE_DIR=${D}${includedir}' 'LIB_DIR=${D}${libdir}'"
 EXTRA_OEMAKE += "'DESTDIR=${D}/usr' 'PREFIX=""'"
-EXTRA_OEMAKE += "'LDFLAGS=${LDFLAGS}' '-L${S}/wiringPi'  '-L${S}/devLib'"
 
 do_compile() {
     oe_runmake -C devLib
     oe_runmake -C wiringPi
     oe_runmake -C devLib static
     oe_runmake -C wiringPi static
-    oe_runmake -C gpio
+    oe_runmake -C gpio 'LDFLAGS=${LDFLAGS} -L${S}/wiringPi  -L${S}/devLib'
 }
 
 do_install() {
