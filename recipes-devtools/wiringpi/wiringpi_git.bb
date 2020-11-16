@@ -14,6 +14,8 @@ CFLAGS_prepend = "-I${S}/wiringPi -I${S}/devLib"
 
 EXTRA_OEMAKE += "'INCLUDE_DIR=${D}${includedir}' 'LIB_DIR=${D}${libdir}'"
 EXTRA_OEMAKE += "'DESTDIR=${D}/usr' 'PREFIX=""'"
+EXTRA_OEMAKE += "'LDCONFIG=echo'"
+EXTRA_OEMAKE += "'WIRINGPI_SUID=0'"
 
 do_compile() {
     oe_runmake -C devLib
