@@ -6,6 +6,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/hardkernel/wiringPi.git;protocol=git;branch=master"
 SRCREV = "b7b6d9552572aa7318d1bef215788cf0232e5e8d"
 
+SRC_URI += " \
+		file://001_gpio_Makefile.patch \
+	"
+
 DEPENDS = "util-linux"
 
 S = "${WORKDIR}/git"
