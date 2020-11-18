@@ -2,14 +2,14 @@
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/devLib/Makefile b/devLib/Makefile
-index 6f1c800..c71d1d2 100644
+index 6f1c800..dfc624d 100644
 --- a/devLib/Makefile
 +++ b/devLib/Makefile
 @@ -42,6 +42,7 @@ CC	= gcc
  INCLUDE	= -I. -I../wiringPi
  DEFS	= -D_GNU_SOURCE
  CFLAGS	= $(DEBUG) $(DEFS) -Wformat=2 -Wall -Winline $(INCLUDE) -pipe -fPIC
-+LDFLAGS = -shared -Wl,-soname
++LDFLAGS = -shared -Wl
  
  LIBS    =
  
@@ -18,7 +18,7 @@ index 6f1c800..c71d1d2 100644
  $(DYNAMIC):	$(OBJ)
  	$Q echo "[Link (Dynamic)]"
 -	$Q $(CC) -shared -Wl,-soname,libwiringPiDev.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPiDev.so.$(VERSION) -lpthread $(OBJ)
-+	$Q $(CC) $(LDFLAGS),libwiringPiDev.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPiDev.so.$(VERSION) -lpthread $(OBJ)
++	$Q $(CC) $(LDFLAGS),-soname,libwiringPiDev.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPiDev.so.$(VERSION) -lpthread $(OBJ)
  
  .c.o:
  	$Q echo [Compile] $<
