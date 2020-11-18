@@ -6,10 +6,6 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/hardkernel/wiringPi.git;protocol=git;branch=master"
 SRCREV = "b7b6d9552572aa7318d1bef215788cf0232e5e8d"
 
-SRC_URI += " \
-		file://001_gpio_Makefile.patch \
-	"
-
 DEPENDS = "util-linux"
 
 S = "${WORKDIR}/git"
@@ -30,8 +26,8 @@ EXTRA_OEMAKE = "\
     'CXXFLAGS=${CXXFLAGS}' \
     'LDFLAGS=${LDFLAGS}' \
     'CFLAGS=${CFLAGS}' \
-    'INCLUDE_DIR=${D}${includedir}' \
-    'LIB_DIR=${D}${libdir}' \
+    'INCLUDE_DIR=${D}/${includedir}' \
+    'LIB_DIR=${D}/${libdir}' \
     'DESTDIR=${D}/usr' \
     'PREFIX=""' \
     'LDCONFIG=echo' \
@@ -40,13 +36,17 @@ EXTRA_OEMAKE = "\
 
 
 do_compile() {
+    oe_runmake -C devLib
+    oe_runmake -C wiringPi
     oe_runmake -C devLib static
     oe_runmake -C wiringPi static
     oe_runmake -C gpio 'LDFLAGS=${LDFLAGS} -L${S}/wiringPi -L${S}/devLib'
 }
 
 do_install() {
-    oe_runmake -C devLib install-static
-    oe_runmake -C wiringPi install-static
+    oe_runmake -C devLib install
+    oe_runmake -C wiringPi install
+
+    install -d ${D}/usr/bin
     oe_runmake -C gpio install
 }
