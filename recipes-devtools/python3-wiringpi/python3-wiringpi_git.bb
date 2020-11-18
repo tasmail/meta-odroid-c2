@@ -11,9 +11,11 @@ S = "${WORKDIR}/git"
 
 inherit setuptools3
 
-DEPENDS += "python3-setuptools swig-native wiringpi"
+DEPENDS += "python3-setuptools swig-native"
 
 python() {
     if 'meta-python' not in d.getVar('BBFILE_COLLECTIONS').split():
         raise bb.parse.SkipRecipe('Requires meta-python to be present.')
 }
+
+RDEPENDS_${PN} += "wiringpi"
