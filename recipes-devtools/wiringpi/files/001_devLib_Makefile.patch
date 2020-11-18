@@ -9,7 +9,7 @@ index 6f1c800..dfc624d 100644
  INCLUDE	= -I. -I../wiringPi
  DEFS	= -D_GNU_SOURCE
  CFLAGS	= $(DEBUG) $(DEFS) -Wformat=2 -Wall -Winline $(INCLUDE) -pipe -fPIC
-+LDFLAGS = -shared -Wl
++BUILD_LDFLAGS = -shared -Wl
  
  LIBS    =
  
@@ -18,7 +18,7 @@ index 6f1c800..dfc624d 100644
  $(DYNAMIC):	$(OBJ)
  	$Q echo "[Link (Dynamic)]"
 -	$Q $(CC) -shared -Wl,-soname,libwiringPiDev.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPiDev.so.$(VERSION) -lpthread $(OBJ)
-+	$Q $(CC) $(LDFLAGS),-soname,libwiringPiDev.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPiDev.so.$(VERSION) -lpthread $(OBJ)
++	$Q $(CC) $(LDFLAGS) $(BUILD_LDFLAGS),-soname,libwiringPiDev.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPiDev.so.$(VERSION) -lpthread $(OBJ)
  
  .c.o:
  	$Q echo [Compile] $<

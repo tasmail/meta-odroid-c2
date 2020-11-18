@@ -9,7 +9,7 @@ index 2598a4c..b558ccf 100644
  INCLUDE	= -I.
  DEFS	= -D_GNU_SOURCE
  CFLAGS	= $(DEBUG) $(DEFS) -Wformat=2 -Wall -Wextra -Winline -Wno-format-truncation $(INCLUDE) -pipe -fPIC
-+LDFLAGS = -shared -Wl
++BUILD_LDFLAGS = -shared -Wl
  
  LIBS    = -lm -lpthread -lrt -lcrypt
  
@@ -18,7 +18,7 @@ index 2598a4c..b558ccf 100644
  $(DYNAMIC):	$(OBJ)
  	$Q echo "[Link (Dynamic)]"
 -	$Q $(CC) -shared -Wl,-soname,libwiringPi.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPi.so.$(VERSION) $(LIBS) $(OBJ)
-+	$Q $(CC) $(LDFLAGS),-soname,libwiringPi.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPi.so.$(VERSION) $(LIBS) $(OBJ)
++	$Q $(CC) $(LDFLAGS) $(BUILD_LDFLAGS),-soname,libwiringPi.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPi.so.$(VERSION) $(LIBS) $(OBJ)
  
  .c.o:
  	$Q echo [Compile] $<
