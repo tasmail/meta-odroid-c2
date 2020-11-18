@@ -1,0 +1,24 @@
+ wiringPi/Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/wiringPi/Makefile b/wiringPi/Makefile
+index 2598a4c..40f9a0d 100644
+--- a/wiringPi/Makefile
++++ b/wiringPi/Makefile
+@@ -42,6 +42,7 @@ CC	= gcc
+ INCLUDE	= -I.
+ DEFS	= -D_GNU_SOURCE
+ CFLAGS	= $(DEBUG) $(DEFS) -Wformat=2 -Wall -Wextra -Winline -Wno-format-truncation $(INCLUDE) -pipe -fPIC
++LDFLAGS = -shared -Wl,-soname
+ 
+ LIBS    = -lm -lpthread -lrt -lcrypt
+ 
+@@ -86,7 +87,7 @@ $(STATIC):	$(OBJ)
+ 
+ $(DYNAMIC):	$(OBJ)
+ 	$Q echo "[Link (Dynamic)]"
+-	$Q $(CC) -shared -Wl,-soname,libwiringPi.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPi.so.$(VERSION) $(LIBS) $(OBJ)
++	$Q $(CC) $(LDFLAGS),libwiringPi.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPi.so.$(VERSION) $(LIBS) $(OBJ)
+ 
+ .c.o:
+ 	$Q echo [Compile] $<

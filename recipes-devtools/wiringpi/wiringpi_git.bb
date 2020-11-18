@@ -3,7 +3,10 @@ SUMMARY = "WiringPi is a PIN based GPIO access library written in C for Raspberr
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/hardkernel/wiringPi.git;protocol=git;branch=master"
+SRC_URI = "git://github.com/hardkernel/wiringPi.git;protocol=git;branch=master \
+           file://001_devLib_Makefile.patch \
+           file://001_wiringPi_Makefile.patch \
+"
 SRCREV = "b7b6d9552572aa7318d1bef215788cf0232e5e8d"
 
 DEPENDS = "util-linux"
