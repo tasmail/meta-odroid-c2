@@ -34,7 +34,6 @@ EXTRA_OEMAKE = "\
     'DESTDIR=${D}/usr' \
     'PREFIX=""' \
     'LDCONFIG=echo' \
-    'WIRINGPI_SUID=0' \    
 "
 
 
