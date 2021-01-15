@@ -9,8 +9,5 @@ This layer depends on:
     URI: git://git.yoctoproject.org/meta-security.git
     branch: zeus
 
-    URI: https://github.com/jumpnow/meta-jumpnow.git
-    branch: zeus
-
 
 meta-odroid-c2 layer maintainer: Andrii Tkachenko <atkachenko@maxcrc.de>
