@@ -52,3 +52,5 @@ do_install() {
     install -d ${D}/usr/bin
     oe_runmake -C gpio install
 }
+
+RDEPENDS_${PN} = "kernel-module-gpiomem"
